@@ -8,3 +8,15 @@ webdriver-manager>=4.0.0
 
 # Data Processing
 lxml>=4.9.0
+
+google-genai>=1.0.0
+# Snowflake Database
+snowflake-connector-python>=3.0.0
+
+# Data Processing
+pandas>=1.3.0
+openpyxl>=3.0.0
+
+# Optional: For scheduled scraping
+schedule>=1.2.0
+
