@@ -1,0 +1,525 @@
+location,date,day_of_week,meal_period,category,item
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,CINNAMAON RAISIN BAGELS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,EGG BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,EVERYTHING BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,GARLIC BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,JALAPENO BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,ONION BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,PLAIN BAGELS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,POPPY BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,SALT BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,SESAME BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,SUNDRIED TOMATO BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BAGELS,WHOLE WHEAT BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,BANANAS
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,CANTALOUPE MELON
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,CUT HONEYDEW MELON
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,CUT PINEAPPLE
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,GOLDEN DELICIOUS APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,GRANNY SMITH APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,GREEN SEEDLESS GRAPES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,RED DELICIOUS APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,RED GRAPEFRUIT
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,RED SEEDLESS  GRAPES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,WATERMELON
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,FRUIT,WHOLE ORANGES
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,ENGLISH MUFFIN
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,PANINI BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,PITA BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,SLICED PUMPERNICKEL BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,SLICED RYE BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,SLICED WHITE BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,SLICED WHOLE WHEAT BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Breakfast,BREADS,VARIETY WRAPS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST MEATS,GRILLED TURKEY SAUSAGE LINKS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST MEATS,PORK SAUSAGE LINKS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST MEATS,SAVORY PLANT-BASED BREAKFAST PATTIES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST ENTREES,BELGIAN  WAFFLES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST ENTREES,OATMEAL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST ENTREES,PANCAKES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREAKFAST ENTREES,SCRAMBLED EGGS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,ASSORTED BAGELS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,CINNAMAON RAISIN BAGELS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,EGG BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,EVERYTHING BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,GARLIC BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,JALAPENO BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,ONION BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,PLAIN BAGELS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,POPPY BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,SALT BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,SESAME BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,SUNDRIED TOMATO BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BAGELS,WHOLE WHEAT BAGEL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,HARD BOILED EGGS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,OATMEAL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,BABY SPINACH
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,BROCCOLI FLORETS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,BROCCOLI SALAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CAULIFLOWER FLORETS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CHERRY TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CHICKPEAS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CHOPPED SWEET RED PEPPERS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CROUTONS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CRUMBLED FETA CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,CUCUMBERS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,DICED TOFU
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,HARDBOILED EGGS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,KALAMATA OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,RED ONION
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,RIPE SLICED OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,ROMAINE LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SHREDDED CARROTS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SHREDDED CHEDDAR  CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SHREDDED RED CABBAGE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SLICED BEETS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,SPRING MIX GREENS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,TOMATO WEDGES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,WASABI PEAS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD BAR,WHOLE BLACK PITTED OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,BALSAMIC VINAIGRETTE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,BALSAMIC VINEGAR
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,BLUE CHEESE DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,CAESAR DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,GOLDEN ITALIAN DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,OLIVE AND CANOLA OIL BLEND
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,RANCH DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SALAD DRESSING,RASPBERRY VINAGRETTE DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,SOUPS,SLOW SIMMERED LENTIL SOUP
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,BOILED HAM
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,COOKED SALAMI
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,DELI MEAT
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,RED ONION
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,SLICED SWISS CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,SLICED TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,TUNA SALAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,TURKEY BREAST
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,DELI BAR ENTREE,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ENTREES,BAKED SWEET POTATOES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ENTREES,MEDIUM PASTA SHELLS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ENTREES,ROASTED BROCCOLI WITH YELLOW SQUASH
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ENTREES,ROTISSERIE BUFFALO CHICKEN
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ENTREES,SHELLS W/SEAFOOD FRA DIAVLO
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,STARCH &  POTATOES,CRISPY CUBE POTATOES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,BANANAS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,CANTALOUPE MELON
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,CUT HONEYDEW MELON
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,CUT PINEAPPLE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,GOLDEN DELICIOUS APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,GRANNY SMITH APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,GREEN SEEDLESS GRAPES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,RED DELICIOUS APPLES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,RED GRAPEFRUIT
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,RED SEEDLESS  GRAPES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,WATERMELON
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,FRUIT,WHOLE ORANGES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,ENGLISH MUFFIN
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,PANINI BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,PITA BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,SLICED PUMPERNICKEL BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,SLICED RYE BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,SLICED WHITE BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,SLICED WHOLE WHEAT BREAD
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,BREADS,VARIETY WRAPS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,GRILLED HOT DOGS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,HAMBURGER POTATO BUN
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,POTATO HOT DOG ROLL
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,PUB BURGER
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,TURKEY BURGERS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB,VEGETABLE BURGER
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,CHEESE SAUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,FRENCH FRIES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,LETTUCE LEAVES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,MONTREAL STEAK SEASONING
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,PICKLE CHIPS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED CHEDDAR CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED ONIONS
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED PEPPERJACK CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,SLICED TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PUB SIDES,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ASIAN INSPIRED CUISINE,BAKED BROWN RICE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ASIAN INSPIRED CUISINE,STIR FRY NOODLES & VEGGIES
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ASIAN INSPIRED CUISINE,THAI SHRIMP RED COCONUT CURRY
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,ASIAN INSPIRED CUISINE,VEGETABLE FRIED RICE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,ALFREDO PESTO SAUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,BAKED MACARONI AND CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,CHEESE PIZZA
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,PENNE  PASTA
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,PIZZA TURKEY PEPPERONI
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,PIZZA & PASTA,PLAIN TOMATO SAUCE
+Livingston Dining Commons,2025-10-04,Saturday,Lunch,OMLET BAR,OMELETS MADE TO ORDER
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,BABY SPINACH
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,BROCCOLI FLORETS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,BROCCOLI SALAD
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CAULIFLOWER FLORETS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CHERRY TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CHICKPEAS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CHOPPED SWEET RED PEPPERS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CROUTONS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CRUMBLED FETA CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,CUCUMBERS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,DICED TOFU
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,HARDBOILED EGGS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,KALAMATA OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,RED ONION
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,RIPE SLICED OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,ROMAINE LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SHREDDED CARROTS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SHREDDED CHEDDAR  CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SHREDDED RED CABBAGE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SLICED BEETS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,SPRING MIX GREENS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,TOMATO WEDGES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,WASABI PEAS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD BAR,WHOLE BLACK PITTED OLIVES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,BALSAMIC VINAIGRETTE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,BALSAMIC VINEGAR
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,BLUE CHEESE DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,CAESAR DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,GOLDEN ITALIAN DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,OLIVE AND CANOLA OIL BLEND
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,RANCH DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SALAD DRESSING,RASPBERRY VINAGRETTE DRESSING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,SOUPS,SLOW SIMMERED LENTIL SOUP
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,BOILED HAM
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,COOKED SALAMI
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,EGG  SALAD
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,RED ONION
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,SLICED SWISS CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,SLICED TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,TUNA SALAD
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,TURKEY BREAST
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,DELI BAR ENTREE,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ENTREES,CHICKEN PARMESAN
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ENTREES,"ORZO WITH PARMESAN CHEESE, BELL PEPPERS AND VEGETABLES"
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ENTREES,SAUTEED ZUCCHINI WITH GARLIC
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ENTREES,SHRIMP TOSSED WITH OLIVE OIL AND HERB MEDLEY
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ENTREES,STEWED WHITE BEANS & SPINACH WITH BASIL
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,GRILLED HOT DOGS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,HAMBURGER POTATO BUN
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,POTATO HOT DOG ROLL
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,PUB BURGER
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,TURKEY BURGERS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB,VEGETABLE BURGER
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,CHEESE SAUCE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,FRENCH FRIES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,LETTUCE LEAVES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,MONTREAL STEAK SEASONING
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,PICKLE CHIPS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED CHEDDAR CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED ONIONS
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED PEPPERJACK CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,SLICED TOMATOES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PUB SIDES,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ASIAN INSPIRED CUISINE,BAKED BROWN RICE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ASIAN INSPIRED CUISINE,MONGOLIAN SIDES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ASIAN INSPIRED CUISINE,STIR FRY NOODLES & VEGGIES
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ASIAN INSPIRED CUISINE,THAI SHRIMP RED COCONUT CURRY
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,ASIAN INSPIRED CUISINE,VEGETABLE FRIED RICE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,ALFREDO PESTO SAUCE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,BAKED MACARONI AND CHEESE
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,CHEESE PIZZA
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,PENNE  PASTA
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,PIZZA TURKEY PEPPERONI
+Livingston Dining Commons,2025-10-04,Saturday,Dinner,PIZZA & PASTA,PLAIN TOMATO SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,CINNAMAON RAISIN BAGELS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,EGG BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,EVERYTHING BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,GARLIC BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,JALAPENO BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,ONION BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,PLAIN BAGELS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,POPPY BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,SALT BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,SESAME BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,SUNDRIED TOMATO BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BAGELS,WHOLE WHEAT BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,BANANAS
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,CANTALOUPE MELON
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,CUT HONEYDEW MELON
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,CUT PINEAPPLE
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,GOLDEN DELICIOUS APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,GRANNY SMITH APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,GREEN SEEDLESS GRAPES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,RED DELICIOUS APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,RED GRAPEFRUIT
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,RED SEEDLESS  GRAPES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,WATERMELON
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,FRUIT,WHOLE ORANGES
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,ENGLISH MUFFIN
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,PANINI BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,PITA BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,SLICED PUMPERNICKEL BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,SLICED RYE BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,SLICED WHITE BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,SLICED WHOLE WHEAT BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Breakfast,BREADS,VARIETY WRAPS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST MEATS,GRILLED TURKEY SAUSAGE LINKS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST MEATS,PORK SAUSAGE LINKS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST MEATS,SAVORY PLANT-BASED BREAKFAST PATTIES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST ENTREES,BELGIAN  WAFFLES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST ENTREES,OATMEAL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST ENTREES,PANCAKES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREAKFAST ENTREES,SCRAMBLED EGGS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,ASSORTED BAGELS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,CINNAMAON RAISIN BAGELS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,EGG BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,EVERYTHING BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,GARLIC BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,JALAPENO BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,ONION BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,PLAIN BAGELS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,POPPY BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,SALT BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,SESAME BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,SUNDRIED TOMATO BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BAGELS,WHOLE WHEAT BAGEL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,HARD BOILED EGGS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,OATMEAL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,BABY SPINACH
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,BROCCOLI FLORETS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,BROCCOLI SALAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CAULIFLOWER FLORETS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CHERRY TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CHICKPEAS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CHOPPED SWEET RED PEPPERS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CROUTONS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CRUMBLED FETA CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,CUCUMBERS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,DICED TOFU
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,HARDBOILED EGGS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,KALAMATA OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,RED ONION
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,RIPE SLICED OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,ROMAINE LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SHREDDED CARROTS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SHREDDED CHEDDAR  CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SHREDDED RED CABBAGE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SLICED BEETS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,SPRING MIX GREENS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,TOMATO WEDGES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,WASABI PEAS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD BAR,WHOLE BLACK PITTED OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,BALSAMIC VINAIGRETTE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,BALSAMIC VINEGAR
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,BLUE CHEESE DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,CAESAR DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,GOLDEN ITALIAN DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,OLIVE AND CANOLA OIL BLEND
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,RANCH DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SALAD DRESSING,RASPBERRY VINAGRETTE DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,SOUPS,SLOW SIMMERED LENTIL SOUP
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,BOILED HAM
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,COOKED SALAMI
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,DELI MEAT
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,RED ONION
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,SLICED SWISS CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,SLICED TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,TUNA SALAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,TURKEY BREAST
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,DELI BAR ENTREE,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ENTREES,BAKED SWEET POTATOES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ENTREES,MEDIUM PASTA SHELLS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ENTREES,ROASTED BROCCOLI WITH YELLOW SQUASH
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ENTREES,ROTISSERIE BUFFALO CHICKEN
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ENTREES,SHELLS W/SEAFOOD FRA DIAVLO
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,STARCH &  POTATOES,CRISPY CUBE POTATOES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,BANANAS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,CANTALOUPE MELON
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,CUT HONEYDEW MELON
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,CUT PINEAPPLE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,GOLDEN DELICIOUS APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,GRANNY SMITH APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,GREEN SEEDLESS GRAPES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,RED DELICIOUS APPLES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,RED GRAPEFRUIT
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,RED SEEDLESS  GRAPES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,WATERMELON
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,FRUIT,WHOLE ORANGES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,ENGLISH MUFFIN
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,PANINI BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,PITA BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,SLICED PUMPERNICKEL BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,SLICED RYE BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,SLICED WHITE BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,SLICED WHOLE WHEAT BREAD
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,BREADS,VARIETY WRAPS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,GRILLED HOT DOGS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,HAMBURGER POTATO BUN
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,POTATO HOT DOG ROLL
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,PUB BURGER
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,TURKEY BURGERS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB,VEGETABLE BURGER
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,CHEESE SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,FRENCH FRIES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,LETTUCE LEAVES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,MONTREAL STEAK SEASONING
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,PICKLE CHIPS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED CHEDDAR CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED ONIONS
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED PEPPERJACK CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,SLICED TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PUB SIDES,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ASIAN INSPIRED CUISINE,BAKED BROWN RICE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ASIAN INSPIRED CUISINE,STIR FRY NOODLES & VEGGIES
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ASIAN INSPIRED CUISINE,THAI SHRIMP RED COCONUT CURRY
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,ASIAN INSPIRED CUISINE,VEGETABLE FRIED RICE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,ALFREDO PESTO SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,BAKED MACARONI AND CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,CHEESE PIZZA
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,PENNE  PASTA
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,PIZZA TURKEY PEPPERONI
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,PIZZA & PASTA,PLAIN TOMATO SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Lunch,OMLET BAR,OMELETS MADE TO ORDER
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,COTTAGE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,CRAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,GRANOLA OATS & HONEY
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,PLAIN GREEK CHOBANI YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,PUMPKIN SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,RAISINS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,STRAWBERRY YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,SUNFLOWER SEEDS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,YOGURT BAR,VANILLA YOGURT
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,BABY SPINACH
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,BROCCOLI FLORETS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,BROCCOLI SALAD
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CAULIFLOWER FLORETS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CHERRY TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CHICKPEAS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CHOPPED SWEET RED PEPPERS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CROUTONS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CRUMBLED FETA CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,CUCUMBERS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,DICED TOFU
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,HARDBOILED EGGS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,KALAMATA OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,RED ONION
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,RIPE SLICED OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,ROMAINE LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SHREDDED CARROTS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SHREDDED CHEDDAR  CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SHREDDED RED CABBAGE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SLICED BEETS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,SPRING MIX GREENS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,TOMATO WEDGES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,WASABI PEAS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD BAR,WHOLE BLACK PITTED OLIVES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,BALSAMIC VINAIGRETTE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,BALSAMIC VINEGAR
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,BLUE CHEESE DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,CAESAR DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,GOLDEN ITALIAN DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,OLIVE AND CANOLA OIL BLEND
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,RANCH DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SALAD DRESSING,RASPBERRY VINAGRETTE DRESSING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,SOUPS,SLOW SIMMERED LENTIL SOUP
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,BOILED HAM
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,COOKED SALAMI
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,EGG  SALAD
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,ICEBERG LETTUCE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,RED ONION
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,SLICED SWISS CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,SLICED TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,TUNA SALAD
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,TURKEY BREAST
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,DELI BAR ENTREE,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ENTREES,CHICKEN PARMESAN
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ENTREES,"ORZO WITH PARMESAN CHEESE, BELL PEPPERS AND VEGETABLES"
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ENTREES,SAUTEED ZUCCHINI WITH GARLIC
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ENTREES,SHRIMP TOSSED WITH OLIVE OIL AND HERB MEDLEY
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ENTREES,STEWED WHITE BEANS & SPINACH WITH BASIL
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,GRILLED HOT DOGS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,HAMBURGER POTATO BUN
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,POTATO HOT DOG ROLL
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,PUB BURGER
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,TURKEY BURGERS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB,VEGETABLE BURGER
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,CHEESE SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,FRENCH FRIES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,LETTUCE LEAVES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,MONTREAL STEAK SEASONING
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,PICKLE CHIPS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED CHEDDAR CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED MUSHROOMS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED ONIONS
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED PEPPERJACK CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED PROVOLONE CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,SLICED TOMATOES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PUB SIDES,YELLOW AMERICAN CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ASIAN INSPIRED CUISINE,BAKED BROWN RICE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ASIAN INSPIRED CUISINE,MONGOLIAN SIDES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ASIAN INSPIRED CUISINE,STIR FRY NOODLES & VEGGIES
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ASIAN INSPIRED CUISINE,THAI SHRIMP RED COCONUT CURRY
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,ASIAN INSPIRED CUISINE,VEGETABLE FRIED RICE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,ALFREDO PESTO SAUCE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,BAKED MACARONI AND CHEESE
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,CHEESE PIZZA
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,PENNE  PASTA
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,PIZZA TURKEY PEPPERONI
+Livingston Dining Commons,2025-10-05,Sunday,Dinner,PIZZA & PASTA,PLAIN TOMATO SAUCE

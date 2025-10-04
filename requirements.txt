@@ -1,0 +1,10 @@
+# Web Scraping Dependencies
+selenium>=4.15.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+
+# ChromeDriver Manager (automatically handles ChromeDriver installation)
+webdriver-manager>=4.0.0
+
+# Data Processing
+lxml>=4.9.0
