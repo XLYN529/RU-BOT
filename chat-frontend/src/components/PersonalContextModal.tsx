@@ -203,8 +203,13 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
             </div>
           ) : step === 'select' ? (
             <div className="type-selector">
-              <button onClick={handleViewContext} className="type-option" style={{background: '#f0f9ff', borderColor: '#3b82f6'}}>
-                <div className="type-icon" style={{background: '#3b82f6'}}>👁️</div>
+              <button onClick={handleViewContext} className="type-option view-context">
+                <div className="type-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
                 <div className="type-info">
                   <h3>View Current Context</h3>
                   <p>See all saved information</p>
@@ -212,7 +217,14 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
               </button>
               
               <button onClick={() => handleSelectType('schedule')} className="type-option">
-                <div className="type-icon blue">📅</div>
+                <div className="type-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                </div>
                 <div className="type-info">
                   <h3>Class Schedule</h3>
                   <p>Add your class times and locations</p>
@@ -220,7 +232,15 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
               </button>
 
               <button onClick={() => handleSelectType('assignment')} className="type-option">
-                <div className="type-icon purple">📝</div>
+                <div className="type-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
                 <div className="type-info">
                   <h3>Assignment</h3>
                   <p>Track deadlines and coursework</p>
@@ -228,15 +248,26 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
               </button>
 
               <button onClick={() => handleSelectType('note')} className="type-option">
-                <div className="type-icon green">📌</div>
+                <div className="type-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 17h.01"></path>
+                    <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
+                    <path d="M12 6v5"></path>
+                  </svg>
+                </div>
                 <div className="type-info">
                   <h3>Personal Note</h3>
-                  <p>Save reminders and preferences</p>
+                  <p>Save reminders and important info</p>
                 </div>
               </button>
 
               <button onClick={() => handleSelectType('preference')} className="type-option">
-                <div className="type-icon orange">⚙️</div>
+                <div className="type-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m5.196-15.196l-4.242 4.242m-5.908 5.908l-4.242 4.242M23 12h-6m-6 0H1m15.196 5.196l-4.242-4.242m-5.908-5.908l-4.242-4.242"></path>
+                  </svg>
+                </div>
                 <div className="type-info">
                   <h3>Preference</h3>
                   <p>Set your personal preferences</p>
@@ -253,14 +284,30 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                 <>
                   {/* Schedule */}
                   {currentContext.schedule && currentContext.schedule.length > 0 && (
-                    <div style={{marginBottom: '24px'}}>
-                      <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: '#1f2937'}}>📅 Class Schedule ({currentContext.schedule.length})</h3>
-                      <div style={{background: '#f9fafb', borderRadius: '8px', padding: '12px'}}>
+                    <div className="context-section">
+                      <div className="context-section-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <h3>Class Schedule ({currentContext.schedule.length})</h3>
+                      </div>
+                      <div className="context-section-content">
                         {currentContext.schedule.map((item: any, index: number) => (
-                          <div key={index} style={{padding: '8px', borderBottom: index < currentContext.schedule.length - 1 ? '1px solid #e5e7eb' : 'none'}}>
-                            <div style={{fontWeight: '600', color: '#1f2937'}}>{item.course}</div>
-                            <div style={{fontSize: '14px', color: '#6b7280'}}>{item.day} • {item.time}</div>
-                            {item.location && <div style={{fontSize: '14px', color: '#6b7280'}}>📍 {item.location}</div>}
+                          <div key={index} className="context-item">
+                            <div className="context-item-title">{item.course}</div>
+                            <div className="context-item-detail">{item.day} • {item.time}</div>
+                            {item.location && (
+                              <div className="context-item-detail">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display: 'inline', marginRight: '4px'}}>
+                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                  <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                {item.location}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -269,15 +316,23 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
 
                   {/* Assignments */}
                   {currentContext.assignments && currentContext.assignments.length > 0 && (
-                    <div style={{marginBottom: '24px'}}>
-                      <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: '#1f2937'}}>📝 Assignments ({currentContext.assignments.length})</h3>
-                      <div style={{background: '#f9fafb', borderRadius: '8px', padding: '12px'}}>
+                    <div className="context-section">
+                      <div className="context-section-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        <h3>Assignments ({currentContext.assignments.length})</h3>
+                      </div>
+                      <div className="context-section-content">
                         {currentContext.assignments.map((item: any, index: number) => (
-                          <div key={index} style={{padding: '8px', borderBottom: index < currentContext.assignments.length - 1 ? '1px solid #e5e7eb' : 'none'}}>
-                            <div style={{fontWeight: '600', color: '#1f2937'}}>{item.title}</div>
-                            <div style={{fontSize: '14px', color: '#6b7280'}}>Due: {item.due_date}</div>
-                            {item.course && <div style={{fontSize: '14px', color: '#6b7280'}}>Course: {item.course}</div>}
-                            {item.description && <div style={{fontSize: '14px', color: '#6b7280', marginTop: '4px'}}>{item.description}</div>}
+                          <div key={index} className="context-item">
+                            <div className="context-item-title">{item.title}</div>
+                            <div className="context-item-detail">Due: {item.due_date}</div>
+                            {item.course && <div className="context-item-detail">Course: {item.course}</div>}
+                            {item.description && <div className="context-item-description">{item.description}</div>}
                           </div>
                         ))}
                       </div>
@@ -286,13 +341,20 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
 
                   {/* Notes */}
                   {currentContext.notes && currentContext.notes.length > 0 && (
-                    <div style={{marginBottom: '24px'}}>
-                      <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: '#1f2937'}}>📌 Notes ({currentContext.notes.length})</h3>
-                      <div style={{background: '#f9fafb', borderRadius: '8px', padding: '12px'}}>
+                    <div className="context-section">
+                      <div className="context-section-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M12 17h.01"></path>
+                          <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path>
+                          <path d="M12 6v5"></path>
+                        </svg>
+                        <h3>Notes ({currentContext.notes.length})</h3>
+                      </div>
+                      <div className="context-section-content">
                         {currentContext.notes.map((item: any, index: number) => (
-                          <div key={index} style={{padding: '8px', borderBottom: index < currentContext.notes.length - 1 ? '1px solid #e5e7eb' : 'none'}}>
-                            <div style={{fontSize: '12px', color: '#6b7280', marginBottom: '4px'}}>[{item.category}]</div>
-                            <div style={{color: '#1f2937'}}>{item.content}</div>
+                          <div key={index} className="context-item">
+                            <div className="context-item-category">[{item.category}]</div>
+                            <div className="context-item-content">{item.content}</div>
                           </div>
                         ))}
                       </div>
@@ -301,13 +363,19 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
 
                   {/* Preferences */}
                   {currentContext.preferences && Object.keys(currentContext.preferences).length > 0 && (
-                    <div style={{marginBottom: '24px'}}>
-                      <h3 style={{fontSize: '18px', fontWeight: '600', marginBottom: '12px', color: '#1f2937'}}>⚙️ Preferences ({Object.keys(currentContext.preferences).length})</h3>
-                      <div style={{background: '#f9fafb', borderRadius: '8px', padding: '12px'}}>
+                    <div className="context-section">
+                      <div className="context-section-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="3"></circle>
+                          <path d="M12 1v6m0 6v6m5.196-15.196l-4.242 4.242m-5.908 5.908l-4.242 4.242M23 12h-6m-6 0H1m15.196 5.196l-4.242-4.242m-5.908-5.908l-4.242-4.242"></path>
+                        </svg>
+                        <h3>Preferences ({Object.keys(currentContext.preferences).length})</h3>
+                      </div>
+                      <div className="context-section-content">
                         {Object.entries(currentContext.preferences).map(([key, value]: [string, any], index: number) => (
-                          <div key={index} style={{padding: '8px', borderBottom: index < Object.keys(currentContext.preferences).length - 1 ? '1px solid #e5e7eb' : 'none'}}>
-                            <div style={{fontWeight: '600', color: '#1f2937'}}>{key}</div>
-                            <div style={{fontSize: '14px', color: '#6b7280'}}>{value}</div>
+                          <div key={index} className="context-item">
+                            <div className="context-item-title">{key}</div>
+                            <div className="context-item-detail">{value}</div>
                           </div>
                         ))}
                       </div>
@@ -318,8 +386,14 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                    (!currentContext.assignments || currentContext.assignments.length === 0) &&
                    (!currentContext.notes || currentContext.notes.length === 0) &&
                    (!currentContext.preferences || Object.keys(currentContext.preferences).length === 0) && (
-                    <div style={{textAlign: 'center', padding: '40px', color: '#6b7280'}}>
-                      No personal context added yet. Add your schedule, assignments, or preferences to get started!
+                    <div className="empty-state">
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
+                      <p>No personal context added yet.</p>
+                      <p style={{fontSize: '14px', opacity: '0.7'}}>Add your schedule, assignments, or preferences to get started!</p>
                     </div>
                   )}
                 </>
@@ -337,37 +411,37 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                 <>
                   {showReviewTable ? (
                     <>
-                      <div style={{ marginBottom: '16px' }}>
-                        <h3 style={{ fontSize: '16px', fontWeight: '600', marginBottom: '12px' }}>
+                      <div className="review-section">
+                        <h3 className="review-title">
                           Review & Edit Your Classes ({parsedSchedules.length})
                         </h3>
-                        <div style={{ overflowX: 'auto' }}>
-                          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
+                        <div className="table-wrapper">
+                          <table className="review-table">
                             <thead>
-                              <tr style={{ background: '#f3f4f6', borderBottom: '2px solid #e5e7eb' }}>
-                                <th style={{ padding: '12px 8px', textAlign: 'left', fontWeight: '600' }}>Course</th>
-                                <th style={{ padding: '12px 8px', textAlign: 'left', fontWeight: '600' }}>Day</th>
-                                <th style={{ padding: '12px 8px', textAlign: 'left', fontWeight: '600' }}>Time</th>
-                                <th style={{ padding: '12px 8px', textAlign: 'left', fontWeight: '600' }}>Location</th>
-                                <th style={{ padding: '12px 8px', textAlign: 'center', fontWeight: '600', width: '60px' }}>Remove</th>
+                              <tr>
+                                <th>Course</th>
+                                <th>Day</th>
+                                <th>Time</th>
+                                <th>Location</th>
+                                <th className="remove-col">Remove</th>
                               </tr>
                             </thead>
                             <tbody>
                               {parsedSchedules.map((schedule, index) => (
-                                <tr key={index} style={{ borderBottom: '1px solid #e5e7eb' }}>
-                                  <td style={{ padding: '8px' }}>
+                                <tr key={index}>
+                                  <td>
                                     <input
                                       type="text"
                                       value={schedule.course}
                                       onChange={(e) => handleScheduleEdit(index, 'course', e.target.value)}
-                                      style={{ width: '100%', padding: '6px', border: '1px solid #e5e7eb', borderRadius: '4px', fontSize: '14px' }}
+                                      className="table-input"
                                     />
                                   </td>
-                                  <td style={{ padding: '8px' }}>
+                                  <td>
                                     <select
                                       value={schedule.day}
                                       onChange={(e) => handleScheduleEdit(index, 'day', e.target.value)}
-                                      style={{ width: '100%', padding: '6px', border: '1px solid #e5e7eb', borderRadius: '4px', fontSize: '14px' }}
+                                      className="table-select"
                                     >
                                       <option value="">Select</option>
                                       <option value="Monday">Monday</option>
@@ -379,31 +453,34 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                                       <option value="Sunday">Sunday</option>
                                     </select>
                                   </td>
-                                  <td style={{ padding: '8px' }}>
+                                  <td>
                                     <input
                                       type="text"
                                       value={schedule.time}
                                       onChange={(e) => handleScheduleEdit(index, 'time', e.target.value)}
                                       placeholder="10:00 AM - 11:20 AM"
-                                      style={{ width: '100%', padding: '6px', border: '1px solid #e5e7eb', borderRadius: '4px', fontSize: '14px' }}
+                                      className="table-input"
                                     />
                                   </td>
-                                  <td style={{ padding: '8px' }}>
+                                  <td>
                                     <input
                                       type="text"
                                       value={schedule.location}
                                       onChange={(e) => handleScheduleEdit(index, 'location', e.target.value)}
                                       placeholder="Hill Center 114"
-                                      style={{ width: '100%', padding: '6px', border: '1px solid #e5e7eb', borderRadius: '4px', fontSize: '14px' }}
+                                      className="table-input"
                                     />
                                   </td>
-                                  <td style={{ padding: '8px', textAlign: 'center' }}>
+                                  <td className="remove-col">
                                     <button
                                       type="button"
                                       onClick={() => handleRemoveSchedule(index)}
-                                      style={{ padding: '4px 8px', background: '#fee', color: '#dc2626', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                                      className="remove-btn"
                                     >
-                                      ✕
+                                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                      </svg>
                                     </button>
                                   </td>
                                 </tr>
@@ -423,10 +500,26 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                     </>
                   ) : !uploadMode ? (
                     <>
-                      <div style={{ textAlign: 'center', padding: '20px', background: '#f9fafb', borderRadius: '8px', marginBottom: '20px' }}>
-                        <p style={{ marginBottom: '12px', color: '#6b7280' }}>Upload a screenshot of your schedule</p>
-                        <label className="btn btn-primary" style={{ display: 'inline-block', cursor: 'pointer' }}>
-                          {parsing ? '📤 Parsing...' : '📸 Upload Schedule Screenshot'}
+                      <div className="upload-section">
+                        <p className="upload-instructions">Upload a screenshot of your schedule</p>
+                        <label className="btn btn-primary upload-btn">
+                          {parsing ? (
+                            <>
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="spinning">
+                                <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                              </svg>
+                              Parsing...
+                            </>
+                          ) : (
+                            <>
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                              </svg>
+                              Upload Schedule Screenshot
+                            </>
+                          )}
                           <input
                             type="file"
                             accept="image/*"
@@ -435,12 +528,11 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                             style={{ display: 'none' }}
                           />
                         </label>
-                        <p style={{ marginTop: '12px', fontSize: '14px', color: '#9ca3af' }}>or</p>
+                        <p className="upload-divider">or</p>
                         <button
                           type="button"
                           onClick={() => setUploadMode(true)}
                           className="btn btn-secondary"
-                          style={{ marginTop: '8px' }}
                         >
                           Enter Manually
                         </button>

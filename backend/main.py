@@ -91,6 +91,7 @@ class ChatRequest(BaseModel):
     message: str
     session_id: Optional[str] = None
     api_key: str | None = None
+    voice_mode: bool = False
 
 class ChatResponse(BaseModel):
     response: str
@@ -238,8 +239,10 @@ async def chat(request: ChatRequest):
         
         # Send message and get response
         logger.info("Sending message to Gemini...")
+        if request.voice_mode:
+            logger.info("🎤 Voice mode enabled - using conversational tone")
         try:
-            response = session.send_message(request.message, personal_context_str)
+            response = session.send_message(request.message, personal_context_str, request.voice_mode)
             logger.info(f"Received response: {response[:100]}...")
         except Exception as e:
             logger.error(f"Gemini API error: {str(e)}")
@@ -254,6 +257,77 @@ async def chat(request: ChatRequest):
         logger.error(f"Unexpected error in chat endpoint: {str(e)}")
         logger.error(traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@app.post("/api/chat/stream")
+async def chat_stream(request: ChatRequest):
+    """
+    Send a message to the RU Assistant and stream the response
+    """
+    async def generate_stream():
+        try:
+            logger.info(f"🌊 STREAMING - Received message: {request.message[:50]}...")
+            logger.info(f"Session ID: {request.session_id}")
+            
+            if not request.message:
+                yield f"data: {json.dumps({'error': 'Message cannot be empty'})}\n\n"
+                return
+            
+            # Use API key from request or fall back to environment variable
+            api_key = request.api_key or os.getenv("GEMINI_API_KEY")
+            
+            if not api_key:
+                logger.error("No API key found")
+                yield f"data: {json.dumps({'error': 'API key not found'})}\n\n"
+                return
+            
+            # Get or create chat session
+            session_id = request.session_id
+            if not session_id or session_id not in chat_sessions:
+                # Create new session
+                logger.info("Creating new chat session")
+                session_id = str(uuid.uuid4())
+                try:
+                    chat_sessions[session_id] = ChatSession(api_key)
+                    logger.info(f"Created session: {session_id}")
+                except Exception as e:
+                    logger.error(f"Failed to create session: {str(e)}")
+                    yield f"data: {json.dumps({'error': 'Failed to create session'})}\n\n"
+                    return
+            else:
+                logger.info(f"Using existing session: {session_id}")
+            
+            # Send session ID first
+            yield f"data: {json.dumps({'session_id': session_id})}\n\n"
+            
+            # Get the session
+            session = chat_sessions[session_id]
+            
+            # Get global personal context
+            personal_context_str = context_manager.format_context_for_llm()
+            if personal_context_str:
+                logger.info(f"Including global personal context ({len(personal_context_str)} chars)")
+            
+            # Stream the response using the ChatSession method (maintains history)
+            logger.info("🌊 Starting stream...")
+            try:
+                for chunk in session.send_message_stream(request.message, personal_context_str, request.voice_mode):
+                    yield f"data: {json.dumps({'chunk': chunk})}\n\n"
+                
+                # Send done signal
+                yield f"data: {json.dumps({'done': True})}\n\n"
+                logger.info("✅ Stream completed")
+                
+            except Exception as e:
+                logger.error(f"Streaming error: {str(e)}")
+                logger.error(traceback.format_exc())
+                yield f"data: {json.dumps({'error': str(e)})}\n\n"
+        
+        except Exception as e:
+            logger.error(f"Unexpected streaming error: {str(e)}")
+            logger.error(traceback.format_exc())
+            yield f"data: {json.dumps({'error': str(e)})}\n\n"
+    
+    return StreamingResponse(generate_stream(), media_type="text/event-stream")
 
 @app.post("/api/parse-schedule")
 async def parse_schedule(image: UploadFile = File(...)):
@@ -492,10 +566,7 @@ async def text_to_speech(text: str = Form(...), voice_id: Optional[str] = Form(N
         
         # Get default voice if not specified
         if voice_id is None:
-            voices = eleven_client.voices.get_all().voices
-            if not voices:
-                raise HTTPException(status_code=500, detail="No voices available")
-            voice_id = voices[0].voice_id
+            voice_id = "21m00Tcm4TlvDq8ikWAM"  # Rachel voice
         
         logger.info(f"Generating speech for text: {text[:100]}...")
         
