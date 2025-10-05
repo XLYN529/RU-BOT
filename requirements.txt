@@ -17,6 +17,12 @@ reflex>=0.5.0
 # AI/ML
 google-genai>=1.0.0
 
+# ElevenLabs Voice Assistant
+elevenlabs>=1.0.0
+sounddevice>=0.4.6
+numpy>=1.24.0  # Required by sounddevice for audio recording
+openai-whisper>=20231117  # OpenAI Whisper - highly accurate speech recognition
+
 # Snowflake Database
 snowflake-connector-python==3.17.4
 google-genai==1.10.0
