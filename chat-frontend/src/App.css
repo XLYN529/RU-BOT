@@ -443,6 +443,81 @@
   background-color: #aa0028;
 }
 
+/* Voice Mode Buttons */
+.voice-button {
+  background-color: #444;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  position: absolute;
+  bottom: 12px;
+  right: 60px;
+}
+
+.voice-button:hover {
+  background-color: #555;
+}
+
+.voice-button.active {
+  background-color: #cc0033;
+}
+
+.voice-button.active:hover {
+  background-color: #aa0028;
+}
+
+.record-button {
+  background-color: #444;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.2s ease;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.record-button:hover:not(:disabled) {
+  background-color: #555;
+}
+
+.record-button.recording {
+  background-color: #cc0033;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.record-button.speaking {
+  background-color: #666;
+  opacity: 0.6;
+}
+
+.record-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(204, 0, 51, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(204, 0, 51, 0);
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar.expanded {
     width: 220px;

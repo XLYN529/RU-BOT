@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import Optional, Dict
 import os
@@ -12,6 +13,8 @@ import sys
 import uuid
 import traceback
 import logging
+import io
+import tempfile
 
 # Set up logging
 logging.basicConfig(
@@ -29,11 +32,45 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from gemini.chat_pipeline_class import ChatSession
 from backend.personal_context import PersonalContextManager
 
+# Import voice processing libraries
+try:
+    import whisper
+    from elevenlabs.client import ElevenLabs
+    VOICE_AVAILABLE = True
+except ImportError:
+    VOICE_AVAILABLE = False
+    logger.warning("Voice libraries not available. Install whisper and elevenlabs for voice features.")
+
 # Store active chat sessions in memory
 chat_sessions: Dict[str, ChatSession] = {}
 
 # Initialize personal context manager
 context_manager = PersonalContextManager()
+
+# Initialize voice processing clients
+if VOICE_AVAILABLE:
+    ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+    if ELEVENLABS_API_KEY:
+        try:
+            eleven_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+            logger.info("ElevenLabs client initialized")
+        except Exception as e:
+            logger.error(f"Failed to initialize ElevenLabs: {e}")
+            eleven_client = None
+    else:
+        eleven_client = None
+        logger.warning("ELEVENLABS_API_KEY not found")
+    
+    # Load Whisper model
+    try:
+        whisper_model = whisper.load_model("base")
+        logger.info("Whisper model loaded")
+    except Exception as e:
+        logger.error(f"Failed to load Whisper model: {e}")
+        whisper_model = None
+else:
+    eleven_client = None
+    whisper_model = None
 
 app = FastAPI(title="RU Assistant API")
 
@@ -408,6 +445,83 @@ async def test_parse():
         ],
         "count": 4
     }
+
+@app.post("/api/speech-to-text")
+async def speech_to_text(audio: UploadFile = File(...)):
+    """Convert speech audio to text using Whisper"""
+    try:
+        if not VOICE_AVAILABLE or whisper_model is None:
+            raise HTTPException(status_code=503, detail="Speech-to-text service not available")
+        
+        # Read audio file
+        audio_bytes = await audio.read()
+        
+        # Save to temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_audio:
+            temp_audio.write(audio_bytes)
+            temp_path = temp_audio.name
+        
+        try:
+            # Transcribe with Whisper
+            result = whisper_model.transcribe(temp_path, language="en", fp16=False)
+            transcript = result["text"].strip()
+            
+            if not transcript:
+                raise HTTPException(status_code=400, detail="No speech detected in audio")
+            
+            logger.info(f"Transcribed: {transcript[:100]}...")
+            return {"text": transcript}
+        finally:
+            # Clean up temp file
+            if os.path.exists(temp_path):
+                os.unlink(temp_path)
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"STT error: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Speech-to-text failed: {str(e)}")
+
+@app.post("/api/text-to-speech")
+async def text_to_speech(text: str = Form(...), voice_id: Optional[str] = Form(None)):
+    """Convert text to speech using ElevenLabs"""
+    try:
+        if not VOICE_AVAILABLE or eleven_client is None:
+            raise HTTPException(status_code=503, detail="Text-to-speech service not available")
+        
+        # Get default voice if not specified
+        if voice_id is None:
+            voices = eleven_client.voices.get_all().voices
+            if not voices:
+                raise HTTPException(status_code=500, detail="No voices available")
+            voice_id = voices[0].voice_id
+        
+        logger.info(f"Generating speech for text: {text[:100]}...")
+        
+        # Generate audio
+        audio_generator = eleven_client.text_to_speech.convert(
+            text=text,
+            voice_id=voice_id,
+            model_id="eleven_multilingual_v2"
+        )
+        
+        # Collect audio bytes
+        audio_bytes = b"".join(audio_generator)
+        
+        # Return as streaming response
+        return StreamingResponse(
+            io.BytesIO(audio_bytes),
+            media_type="audio/mpeg",
+            headers={"Content-Disposition": "attachment; filename=speech.mp3"}
+        )
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"TTS error: {str(e)}")
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Text-to-speech failed: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn
