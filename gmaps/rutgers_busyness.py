@@ -18,10 +18,12 @@ import requests
 import populartimes
 from typing import Optional, Dict, List, Tuple
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
 
-# Google Maps Platform API key (Places API enabled)
-API_KEY = "AIzaSyA2h5N7d1EfTutMDw1r-O9Rh4J1JqoOYyM"
+load_dotenv()  # loads variables from .env if present
+API_KEY = os.getenv("API_KEY")  # read from environment
 
 # Rutgers–New Brunswick center and rectangle radius (~7 km)
 RUTGERS_CENTER_LAT = 40.50250
