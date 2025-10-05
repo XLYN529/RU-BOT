@@ -377,7 +377,11 @@ def get_thinking_model_response(api_key, user_message, context):
     from the database (like current menu items or specific hours), politely explain that the 
     database connection is still being configured.
     
-    Be concise, friendly, and helpful. Format your responses clearly.
+    FORMATTING RULES:
+    - Use plain text formatting (no Markdown symbols like *, **, #, etc.)
+    - Use line breaks and indentation for structure
+    - Use simple dashes (-) for lists if needed
+    - Be concise, friendly, and helpful
     """
     
     Client = genai.Client(api_key=api_key)
