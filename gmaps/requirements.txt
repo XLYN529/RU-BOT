@@ -1,0 +1,4 @@
+requests
+fastapi
+uvicorn
+git+https://github.com/m-wrzr/populartimes
