@@ -18,7 +18,12 @@ reflex>=0.5.0
 google-genai>=1.0.0
 
 # Snowflake Database
-snowflake-connector-python>=3.0.0
-
-# Optional: For scheduled scraping
+snowflake-connector-python==3.17.4
+google-genai==1.10.0
+python-dotenv==1.0.1
+fastapi
+uvicorn
+pydantic
+requests
+git+https://github.com/m-wrzr/populartimes
 schedule>=1.2.0
