@@ -1,0 +1,72 @@
+{
+  "schedule": [
+    {
+      "course": "CS 112 Data structures",
+      "day": "Wednesday",
+      "time": "10:00 AM - 11:00 PM",
+      "location": "Hill Center 114",
+      "added_at": "2025-10-05T02:23:59.087751"
+    },
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Wednesday",
+      "time": "12:10 PM - 1:30 PM",
+      "location": "SEC-111",
+      "added_at": "2025-10-05T05:04:31.360046"
+    },
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Wednesday",
+      "time": "4:05 PM - 5:00 PM",
+      "location": "N/A",
+      "added_at": "2025-10-05T05:04:31.364701"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Tuesday",
+      "time": "5:40 PM - 7:00 PM",
+      "location": "LSH-A102",
+      "added_at": "2025-10-05T05:04:31.367774"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Thursday",
+      "time": "5:40 PM - 7:00 PM",
+      "location": "LSH-A102",
+      "added_at": "2025-10-05T05:04:31.374348"
+    },
+    {
+      "course": "LINEAR OPTIMIZATION",
+      "day": "Tuesday",
+      "time": "7:30 PM - 8:50 PM",
+      "location": "SEC-209",
+      "added_at": "2025-10-05T05:04:31.377541"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Wednesday",
+      "time": "7:45 PM - 8:40 PM",
+      "location": "N/A",
+      "added_at": "2025-10-05T05:04:31.379976"
+    },
+    {
+      "course": "LINEAR OPTIMIZATION",
+      "day": "Thursday",
+      "time": "7:30 PM - 8:50 PM",
+      "location": "SEC-209",
+      "added_at": "2025-10-05T05:04:31.382272"
+    },
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Friday",
+      "time": "2:00 PM - 3:20 PM",
+      "location": "SEC-111",
+      "added_at": "2025-10-05T05:04:31.384516"
+    }
+  ],
+  "assignments": [],
+  "preferences": {},
+  "notes": [],
+  "created_at": "2025-10-05T02:23:59.087712",
+  "updated_at": "2025-10-05T05:04:31.384523"
+}

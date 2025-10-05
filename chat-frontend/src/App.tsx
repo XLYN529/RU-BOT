@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, FormEvent, KeyboardEvent } from 'react'
 import axios from 'axios'
 import './App.css'
+import PersonalContextModal from './components/PersonalContextModal'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -13,16 +14,36 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [sessionId, setSessionId] = useState<string | null>(null)
   const [sidebarExpanded, setSidebarExpanded] = useState(true)
+  const [modalOpen, setModalOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  // Load session from localStorage on mount
+  useEffect(() => {
+    const savedSession = localStorage.getItem('ru_assistant_session')
+    if (savedSession) {
+      setSessionId(savedSession)
+      console.log('Restored session:', savedSession)
+    }
+  }, [])
+
+  // Save session to localStorage when it changes
+  useEffect(() => {
+    if (sessionId) {
+      localStorage.setItem('ru_assistant_session', sessionId)
+      console.log('Saved session:', sessionId)
+    }
+  }, [sessionId])
 
   const newChat = () => {
     setMessages([])
     setSessionId(null)
+    localStorage.removeItem('ru_assistant_session')
+    console.log('Started new chat - cleared session')
   }
 
   const addPersonalContext = () => {
-    // TODO: Implement personal context functionality
-    alert('Personal context feature coming soon!')
+    // Personal context is now global - no session required
+    setModalOpen(true)
   }
 
   const scrollToBottom = () => {
@@ -98,7 +119,13 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <>
+      <PersonalContextModal 
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        sessionId={sessionId}
+      />
+      <div className="app">
       {/* Sidebar */}
       <div className={`sidebar ${sidebarExpanded ? 'expanded' : 'collapsed'}`}>
         <div className="sidebar-header">
@@ -224,6 +251,7 @@ function App() {
         )}
       </div>
     </div>
+    </>
   )
 }
 
