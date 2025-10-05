@@ -149,54 +149,79 @@ function App() {
       <div className={`chat-container ${sidebarExpanded ? 'with-sidebar-expanded' : 'with-sidebar-collapsed'}`}>
         {messages.length === 0 ? (
           <div className="welcome-screen">
-            <h1 className="title">RU Assistant</h1>
-            <p className="subtitle">Ask me anything about Rutgers University</p>
+            <h1 className="title">Find what YOU need?</h1>
+            <p className="subtitle">Ask anything about Rutgers University while having context of your own personal info</p>
+            <form onSubmit={handleSubmit} className="input-container">
+              <div className="input-wrapper">
+                <textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask anything..."
+                  className="input-field"
+                  rows={2}
+                  disabled={loading}
+                />
+                <button 
+                  type="submit" 
+                  className="send-button"
+                  disabled={loading || !input.trim()}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </form>
           </div>
         ) : (
-          <div className="messages-container">
-            {messages.map((message, index) => (
-              <div key={index} className={`message ${message.role}`}>
-                <div className="message-content">
-                  {message.content}
+          <>
+            <div className="messages-container">
+              {messages.map((message, index) => (
+                <div key={index} className={`message ${message.role}`}>
+                  <div className="message-content">
+                    {message.content}
+                  </div>
                 </div>
-              </div>
-            ))}
-            {loading && (
-              <div className="message assistant">
-                <div className="message-content loading">
-                  <span className="dot"></span>
-                  <span className="dot"></span>
-                  <span className="dot"></span>
+              ))}
+              {loading && (
+                <div className="message assistant">
+                  <div className="message-content loading">
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                  </div>
                 </div>
-              </div>
-            )}
-            <div ref={messagesEndRef} />
-          </div>
-        )}
+              )}
+              <div ref={messagesEndRef} />
+            </div>
 
-        <form onSubmit={handleSubmit} className="input-container">
-          <div className="input-wrapper">
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Ask anything..."
-              className="input-field"
-              rows={1}
-              disabled={loading}
-            />
-            <button 
-              type="submit" 
-              className="send-button"
-              disabled={loading || !input.trim()}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="19" x2="12" y2="5"></line>
-                <polyline points="5 12 12 5 19 12"></polyline>
-              </svg>
-            </button>
-          </div>
-        </form>
+            <form onSubmit={handleSubmit} className="input-container">
+              <div className="input-wrapper">
+                <textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Ask anything..."
+                  className="input-field"
+                  rows={2}
+                  disabled={loading}
+                />
+                <button 
+                  type="submit" 
+                  className="send-button"
+                  disabled={loading || !input.trim()}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </>
+        )}
       </div>
     </div>
   )
