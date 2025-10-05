@@ -55,13 +55,14 @@ class ChatSession:
         
         logger.info("🎬 Initializing ChatSession with database integration")
     
-    def send_message(self, message: str) -> str:
+    def send_message(self, message: str, personal_context: str = "") -> str:
         """
         Send a message with full pipeline: intent classification → database query → response.
         Maintains conversation history for context.
         
         Args:
             message: User message
+            personal_context: Optional personal context string
             
         Returns:
             str: Assistant's response with database data
@@ -70,10 +71,12 @@ class ChatSession:
             self.message_count += 1
             logger.info("="*70)
             logger.info(f"💬 ChatSession Message #{self.message_count}: {message}")
+            if personal_context:
+                logger.info(f"👤 Personal context provided ({len(personal_context)} chars)")
             logger.info("="*70)
             
             # Use the full pipeline with intent classification and database queries
-            response = send_user_message(self.api_key, message)
+            response = send_user_message(self.api_key, message, personal_context)
             
             # Store in conversation history
             self.conversation_history.append({
@@ -327,7 +330,7 @@ def query_snowflake(intent_data, user_message=None):
         }
 
 
-def assemble_final_context(user_message, intent_response, sql_response):
+def assemble_final_context(user_message, intent_response, sql_response, personal_context=""):
     """
     Assembles the final context prompt for the thinking model.
     
@@ -335,11 +338,18 @@ def assemble_final_context(user_message, intent_response, sql_response):
         user_message: Original user question
         intent_response: Response from intent classification model
         sql_response: Response from SQL query (or None if not applicable)
+        personal_context: Optional personal context string
     
     Returns:
         str: Assembled context for the thinking model
     """
     context_parts = []
+    
+    # Add personal context first if available
+    if personal_context:
+        context_parts.append("=== PERSONAL CONTEXT ===")
+        context_parts.append(personal_context)
+        context_parts.append("\n=== END PERSONAL CONTEXT ===\n")
     
     context_parts.append(f"User Question: {user_message}")
     context_parts.append(f"\nIdentified Intent/Categories: {intent_response}")
@@ -387,7 +397,7 @@ def get_thinking_model_response(api_key, user_message, context):
     Client = genai.Client(api_key=api_key)
     
     chat = Client.chats.create(
-        model='gemini-2.0-flash-thinking-exp-01-21',
+        model='gemini-2.0-flash',  # Faster model for quicker responses
         config=types.GenerateContentConfig(
             system_instruction=system_prompt,
             temperature=0.7
@@ -401,9 +411,11 @@ def get_thinking_model_response(api_key, user_message, context):
     return response.text
 
 
-def send_user_message(api_key, user_message):
+def send_user_message(api_key, user_message, personal_context=""):
         logger.info("="*70)
         logger.info(f"🚀 NEW USER MESSAGE: {user_message}")
+        if personal_context:
+            logger.info(f"👤 PERSONAL CONTEXT: {personal_context[:200]}...")
         logger.info("="*70)
         
         sys_prompt = """
@@ -514,7 +526,7 @@ def send_user_message(api_key, user_message):
         
         # Step 4: Assemble final context
         logger.info("🔧 STEP 4: Assembling context for thinking model...")
-        final_context = assemble_final_context(user_message, intent_text, sql_response)
+        final_context = assemble_final_context(user_message, intent_text, sql_response, personal_context)
         logger.info(f"📝 Context length: {len(final_context)} characters")
         
         # Step 5: Get final response from thinking model
@@ -560,7 +572,7 @@ def send_user_message_with_history(api_key, user_message, history):
     
     # Create a new chat session
     chat = Client.chats.create(
-        model='gemini-2.0-flash-thinking-exp-01-21',
+        model='gemini-2.0-flash',  # Faster model for quicker responses
         config=types.GenerateContentConfig(
             system_instruction=system_prompt,
             temperature=0.7

@@ -1,0 +1,80 @@
+{
+  "schedule": [
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Wednesday",
+      "time": "12:10 PM - 1:30 PM",
+      "location": "SEC-111",
+      "added_at": "2025-10-05T05:17:03.420303"
+    },
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Wednesday",
+      "time": "4:05 PM - 5:00 PM",
+      "location": null,
+      "added_at": "2025-10-05T05:17:03.434898"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Tuesday",
+      "time": "5:40 PM - 7:00 PM",
+      "location": "LSH-A102",
+      "added_at": "2025-10-05T05:17:03.438193"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Thursday",
+      "time": "5:40 PM - 7:00 PM",
+      "location": "LSH-A102",
+      "added_at": "2025-10-05T05:17:03.439497"
+    },
+    {
+      "course": "LINEAR OPTIMIZATION",
+      "day": "Tuesday",
+      "time": "7:30 PM-8:50 PM",
+      "location": "SEC-209",
+      "added_at": "2025-10-05T05:17:03.441437"
+    },
+    {
+      "course": "SOFTWARE METHODOLOGY",
+      "day": "Wednesday",
+      "time": "7:45 PM-8:40 PM",
+      "location": null,
+      "added_at": "2025-10-05T05:17:03.442973"
+    },
+    {
+      "course": "LINEAR OPTIMIZATION",
+      "day": "Thursday",
+      "time": "7:30 PM-8:50 PM",
+      "location": "SEC-209",
+      "added_at": "2025-10-05T05:17:03.447651"
+    },
+    {
+      "course": "DSGN&ANAL COMP ALGOR",
+      "day": "Friday",
+      "time": "2:00 PM-3:20 PM",
+      "location": "SEC-111",
+      "added_at": "2025-10-05T05:17:03.449623"
+    }
+  ],
+  "assignments": [
+    {
+      "title": "chess assignment",
+      "due_date": "2025-10-14",
+      "course": "cs213",
+      "description": "we are cooked",
+      "completed": false,
+      "added_at": "2025-10-05T05:21:56.670338"
+    }
+  ],
+  "preferences": {},
+  "notes": [
+    {
+      "content": "i am vegetarian",
+      "category": "general",
+      "added_at": "2025-10-05T05:21:05.150470"
+    }
+  ],
+  "created_at": "2025-10-05T05:17:03.420275",
+  "updated_at": "2025-10-05T05:21:56.670410"
+}
