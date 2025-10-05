@@ -13,6 +13,7 @@ function App() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [sessionId, setSessionId] = useState<string | null>(null)
+  const [queryStatus, setQueryStatus] = useState<string | null>(null)
   const [sidebarExpanded, setSidebarExpanded] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
   const [voiceMode, setVoiceMode] = useState(false)
@@ -74,13 +75,23 @@ function App() {
     const newUserMessage = { role: 'user' as const, content: userMessage }
     setMessages(prev => [...prev, newUserMessage])
     setLoading(true)
+    setQueryStatus('Thinking...')
+
+    // Update status after a short delay to show querying
+    const queryTimer = setTimeout(() => {
+      setQueryStatus('Querying databases...')
+    }, 500)
 
     try {
       // Send message with session ID (backend maintains full conversation history)
       const response = await axios.post('http://localhost:8000/api/chat', {
         message: userMessage,
-        session_id: sessionId
+        session_id: sessionId,
+        voice_mode: shouldSpeak  // Flag for voice mode to use different system prompt
       })
+      
+      clearTimeout(queryTimer)
+      setQueryStatus(null)
 
       // Store session ID from response (for first message or new session)
       if (response.data.session_id && response.data.session_id !== sessionId) {
@@ -90,12 +101,12 @@ function App() {
       // Add assistant response to state
       const assistantMessage = response.data.response
       setMessages(prev => [...prev, { role: 'assistant' as const, content: assistantMessage }])
-      
       // If voice mode, speak the response
       if (shouldSpeak && voiceMode) {
         await speakText(assistantMessage)
       }
     } catch (error: any) {
+      clearTimeout(queryTimer)
       console.error('Error:', error)
       
       // Extract detailed error message
@@ -118,7 +129,9 @@ function App() {
         content: errorMessage
       }])
     } finally {
+      clearTimeout(queryTimer)
       setLoading(false)
+      setQueryStatus(null)
     }
   }
 
@@ -446,12 +459,33 @@ function App() {
             <div className="messages-container">
               {messages.map((message, index) => (
                 <div key={index} className={`message ${message.role}`}>
-                  <div className="message-content">
-                    {message.content}
-                  </div>
+                  {message.role === 'user' ? (
+                    <div className="message-content">{message.content}</div>
+                  ) : (
+                    <div style={{ whiteSpace: 'pre-wrap' }}>
+                      {message.content.split('\n').map((line, i) => {
+                        // Format lists
+                        if (line.trim().match(/^[-•]\s/)) {
+                          return <div key={i} style={{ paddingLeft: '20px', marginBottom: '4px' }}>• {line.replace(/^[-•]\s/, '')}</div>
+                        }
+                        // Format numbered lists
+                        if (line.trim().match(/^\d+\.\s/)) {
+                          return <div key={i} style={{ paddingLeft: '20px', marginBottom: '4px' }}>{line}</div>
+                        }
+                        // Regular lines
+                        return line.trim() ? <div key={i} style={{ marginBottom: '8px' }}>{line}</div> : <div key={i} style={{ height: '8px' }} />
+                      })}
+                    </div>
+                  )}
                 </div>
               ))}
-              {loading && (
+              {queryStatus && (
+                <div className="query-status">
+                  <div className="gradient-loader"></div>
+                  <span className="status-text">{queryStatus}</span>
+                </div>
+              )}
+              {loading && !queryStatus && (
                 <div className="message assistant">
                   <div className="message-content loading">
                     <span className="dot"></span>
