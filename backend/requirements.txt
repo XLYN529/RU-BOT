@@ -6,3 +6,5 @@ google-generativeai>=0.8.0
 python-dotenv>=1.0.0
 snowflake-connector-python>=3.0.0
 Pillow>=10.0.0
+openai-whisper>=20231117
+elevenlabs>=0.2.0

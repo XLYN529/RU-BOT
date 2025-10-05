@@ -11,6 +11,9 @@ import tempfile
 import requests.exceptions as req_exceptions
 import shutil
 import subprocess
+from google import genai
+from google.genai import types
+import whisper
 
 # Load environment variables from .env file but suppress parse warnings from python-dotenv
 try:
@@ -33,11 +36,15 @@ else:
     eleven_client = None
 
 # Google Gemini API config
-API_KEY = os.getenv("GOOGLE_GEMINI_API_KEY")
-GEMINI_API_URL = "https://api.generativeai.googleapis.com/v1beta2/models/gemini-pro:generateText"
-
-# Allow an escape hatch for debugging TLS issues (set GEMINI_INSECURE=1 in your env to skip verification)
-GEMINI_INSECURE = os.getenv('GEMINI_INSECURE', '') == '1'
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if GEMINI_API_KEY:
+    try:
+        gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+    except Exception as e:
+        print(f"Warning: could not initialize Gemini client: {e}")
+        gemini_client = None
+else:
+    gemini_client = None
 
 # Audio recording settings
 FS = 16000  # Sample rate
@@ -45,91 +52,121 @@ DURATION = 5  # Seconds to record per input
 
 def record_audio(filename="input.wav", duration=DURATION, fs=FS):
     print(f"Recording for {duration} seconds...")
-    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1)
+    print("🎤 Speak now!")
+    recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
     sd.wait()
+    print("✅ Recording complete")
+    
+    # Check recording quality
+    import numpy as np
+    max_amplitude = np.max(np.abs(recording))
+    print(f"📊 Max amplitude: {max_amplitude} (should be > 100 for audible speech)")
+    
+    if max_amplitude < 100:
+        print("⚠️  WARNING: Very quiet recording! Check your microphone volume/permissions")
+    
     # Save as WAV file
     with wave.open(filename, "wb") as wf:
         wf.setnchannels(1)
         wf.setsampwidth(2)  # 16-bit
         wf.setframerate(fs)
         wf.writeframes(recording.tobytes())
-    print(f"Saved recording to {filename}")
+    
+    file_size = os.path.getsize(filename)
+    print(f"💾 Saved recording to {filename} ({file_size} bytes)")
+
+# Load Whisper model once at startup (cached for performance)
+print("Loading Whisper speech recognition model...")
+try:
+    whisper_model = whisper.load_model("base")  # Options: tiny, base, small, medium, large
+    print("✅ Whisper model loaded successfully")
+except Exception as e:
+    print(f"⚠️  Could not load Whisper model: {e}")
+    whisper_model = None
 
 def speech_to_text(filepath="input.wav"):
     """
-    Upload audio file to Eleven Labs STT and get transcription.
+    Transcribe audio file using OpenAI Whisper (highly accurate, works offline).
     """
-    url = "https://api.elevenlabs.io/v1/stt/convert"
-    headers = {
-        "xi-api-key": os.getenv("ELEVENLABS_API_KEY")
-    }
-    data = {
-        "model_id": "scribe_v1",
-        "response_format": "text"
-    }
-    print("Uploading audio for transcription...")
+    if whisper_model is None:
+        print("❌ Whisper model not available. Cannot transcribe.")
+        return ""
+    
+    # Check if audio file exists and has content
+    if not os.path.exists(filepath):
+        print(f"❌ Audio file not found: {filepath}")
+        return ""
+    
+    file_size = os.path.getsize(filepath)
+    print(f"📊 Audio file size: {file_size} bytes")
+    
+    if file_size < 1000:  # Very small file, probably no audio
+        print("⚠️  Audio file is too small - may not contain speech")
+    
+    print("Transcribing audio with Whisper...")
     try:
-        with open(filepath, "rb") as f:
-            files = {"file": f}
-            response = requests.post(url, headers=headers, files=files, data=data)
+        # Whisper transcription (very accurate!)
+        result = whisper_model.transcribe(filepath, language="en", fp16=False)
+        
+        # Debug: show what Whisper returned
+        print(f"🔍 DEBUG - Whisper result keys: {result.keys()}")
+        print(f"🔍 DEBUG - Raw text: '{result['text']}'")
+        print(f"🔍 DEBUG - Text length: {len(result['text'])}")
+        
+        transcript = result["text"].strip()
+        
+        if transcript:
+            print(f"✅ Transcription: {transcript}")
+            return transcript
+        else:
+            print("⚠️  Whisper returned empty text - no speech detected in audio")
+            # Show segments if available for debugging
+            if "segments" in result and result["segments"]:
+                print(f"🔍 DEBUG - Found {len(result['segments'])} segments")
+                for i, seg in enumerate(result["segments"][:3]):  # Show first 3
+                    print(f"  Segment {i}: '{seg.get('text', '')}' (confidence: {seg.get('no_speech_prob', 'N/A')})")
+            return ""
+            
     except FileNotFoundError:
-        print(f"Audio file not found: {filepath}")
+        print(f"❌ Audio file not found: {filepath}")
         return ""
     except Exception as e:
-        print(f"Error uploading audio: {e}")
-        return ""
-
-    if response.status_code == 200:
-        transcript = response.text
-        print(f"Transcription: {transcript}")
-        return transcript
-    else:
-        print(f"STT request failed: {response.status_code} - {response.text}")
+        print(f"❌ Error during transcription: {e}")
+        import traceback
+        traceback.print_exc()
         return ""
 
 def call_gemini_api(prompt):
     """
     Send prompt to Google Gemini API and get AI-generated text response.
+    Uses the modern google-genai library.
     """
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {API_KEY}",
-    }
-    json_data = {
-        "prompt": {
-            "text": prompt
-        },
-        "temperature": 0.7,
-        "maxOutputTokens": 1024,
-    }
+    if gemini_client is None:
+        print("Gemini client is not configured. Please set GEMINI_API_KEY in .env")
+        return "Sorry, Gemini is not configured. Please check your API key."
+    
     print("Calling Gemini API...")
     try:
-        response = requests.post(GEMINI_API_URL, headers=headers, json=json_data, verify=not GEMINI_INSECURE, timeout=15)
-    except req_exceptions.SSLError as e:
-        # SSL diagnostic information
-        proxies = {k: os.environ.get(k) for k in ('HTTP_PROXY', 'http_proxy', 'HTTPS_PROXY', 'https_proxy')}
-        cert_env = {k: os.environ.get(k) for k in ('REQUESTS_CA_BUNDLE', 'SSL_CERT_FILE')}
-        print("Gemini SSL error:", e)
-        print("Proxies:", proxies)
-        print("Cert env vars:", cert_env)
-        print("If you're behind a proxy or corporate firewall that intercepts TLS, try setting GEMINI_INSECURE=1 temporarily to diagnose (not recommended for production).")
-        return "Gemini SSL error: network verification failed. See logs for diagnostics."
+        # Create a chat session with system instructions
+        chat = gemini_client.chats.create(
+            model='gemini-2.0-flash',
+            config=types.GenerateContentConfig(
+                system_instruction="""You are a helpful and friendly AI assistant for Rutgers University students.
+                Provide a casual, informal, short, concise, accurate, and helpful responses. Be conversational and natural.""",
+                temperature=0.7,
+                max_output_tokens=1024
+            )
+        )
+        
+        # Send the message and get response
+        response = chat.send_message(prompt)
+        generated_text = response.text
+        print(f"Generated response: {generated_text[:100]}...")
+        return generated_text
+        
     except Exception as e:
-        print("Gemini request exception:", e)
-        return "Gemini request failed: see logs"
-
-    if response.status_code == 200:
-        try:
-            result = response.json()
-            generated_text = result['candidates'][0]['output']
-            print(f"Generated response: {generated_text}")
-            return generated_text
-        except Exception as e:
-            print("Error parsing Gemini response:", e)
-            return "Sorry, I could not parse the response."
-    else:
-        print(f"Gemini API error: {response.status_code} {response.text}")
-        return "Sorry, I could not generate a response."
+        print(f"Gemini request exception: {e}")
+        return "Sorry, I could not generate a response. Please try again."
 
 def text_to_speech(text, voice_id=None, model_id="eleven_multilingual_v2"):
     """
@@ -214,7 +251,7 @@ def main():
         response_text = call_gemini_api(user_text)
 
         # Speak the LLM's response back to user
-        text_to_speech(response_text)
+        text_to_speech(response_text, voice_id="21m00Tcm4TlvDq8ikWAM")
 
 if __name__ == "__main__":
     main()
