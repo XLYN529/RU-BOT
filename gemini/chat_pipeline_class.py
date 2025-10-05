@@ -7,6 +7,8 @@ import snowflake.connector
 import logging
 import traceback
 from datetime import date, datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
 
 # Load environment variables
 load_dotenv()
@@ -17,6 +19,15 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Add gmaps directory to path for busyness imports
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+try:
+    from gmaps.busyness_helper import get_busyness_at_time, find_peak_time, extract_busyness_query_type
+    BUSYNESS_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"Busyness module not available: {e}")
+    BUSYNESS_AVAILABLE = False
 
 
 def convert_to_serializable(obj):
@@ -330,7 +341,49 @@ def query_snowflake(intent_data, user_message=None):
         }
 
 
-def assemble_final_context(user_message, intent_response, sql_response, personal_context=""):
+def query_busyness(user_message):
+    """
+    Query location busyness based on user message.
+    Automatically determines if it's a specific time or peak time query.
+    
+    Args:
+        user_message: User's query text
+    
+    Returns:
+        dict: Busyness query results
+    """
+    if not BUSYNESS_AVAILABLE:
+        return {
+            "status": "unavailable",
+            "message": "Busyness data is currently unavailable"
+        }
+    
+    try:
+        query_type = extract_busyness_query_type(user_message)
+        logger.info(f"🔍 Busyness query type: {query_type}")
+        
+        if query_type == "peak_time":
+            logger.info("📊 Finding peak busy times...")
+            result = find_peak_time(user_message)
+        else:
+            logger.info("⏰ Checking busyness at specific time...")
+            result = get_busyness_at_time(user_message)
+        
+        return {
+            "status": result.get("status", "success"),
+            "data": result,
+            "query_type": query_type
+        }
+    
+    except Exception as e:
+        logger.error(f"❌ Busyness query error: {e}")
+        return {
+            "status": "error",
+            "message": f"Error checking busyness: {str(e)}"
+        }
+
+
+def assemble_final_context(user_message, intent_response, sql_response, personal_context="", busyness_response=None):
     """
     Assembles the final context prompt for the thinking model.
     
@@ -339,6 +392,7 @@ def assemble_final_context(user_message, intent_response, sql_response, personal
         intent_response: Response from intent classification model
         sql_response: Response from SQL query (or None if not applicable)
         personal_context: Optional personal context string
+        busyness_response: Response from busyness query (or None if not applicable)
     
     Returns:
         str: Assembled context for the thinking model
@@ -358,6 +412,9 @@ def assemble_final_context(user_message, intent_response, sql_response, personal
         context_parts.append(f"\nDatabase Results:\n{json.dumps(sql_response['data'], indent=2)}")
     elif sql_response and sql_response.get("status") == "not_implemented":
         context_parts.append(f"\nNote: {sql_response['message']}")
+    
+    if busyness_response and busyness_response.get("status") in ["success", "unavailable"]:
+        context_parts.append(f"\nBusyness Data:\n{json.dumps(busyness_response.get('data', {}), indent=2, default=str)}")
     
     return "\n".join(context_parts)
 
@@ -380,6 +437,7 @@ def get_thinking_model_response(api_key, user_message, context):
     - Dining hall and restaurant hours
     - Gym hours and facilities
     - Campus events
+    - Location busyness/crowdedness (real-time and historical data)
     - General Rutgers information
     
     When the SQL database is not set up yet, use your knowledge to provide helpful answers 
@@ -387,11 +445,22 @@ def get_thinking_model_response(api_key, user_message, context):
     from the database (like current menu items or specific hours), politely explain that the 
     database connection is still being configured.
     
+    BUSYNESS DATA INTERPRETATION:
+    - Popularity values are 0-100% indicating how crowded a location is
+    - 0-30%: Light/Not busy 🟢
+    - 30-60%: Moderately busy 🟡
+    - 60-85%: Very busy 🟠
+    - 85-100%: Extremely crowded 🔴
+    - Source can be 'live' (real-time) or 'historical' (typical for that time)
+    - When busyness data is paired with hours data, check if the location is even open at the requested time
+    - If location is closed at the requested time, prioritize mentioning that over busyness data
+    
     FORMATTING RULES:
     - Use plain text formatting (no Markdown symbols like *, **, #, etc.)
     - Use line breaks and indentation for structure
     - Use simple dashes (-) for lists if needed
     - Be concise, friendly, and helpful
+    - When showing busyness, include the emoji indicators
     """
     
     Client = genai.Client(api_key=api_key)
@@ -446,6 +515,12 @@ def send_user_message(api_key, user_message, personal_context=""):
                - Contains: name, campus, address, phone
                - Example data: "Alexander Library", "College Avenue Campus", "169 College Ave"
             
+            7. "Location Busyness" - Real-time and historical crowdedness data
+               - For queries about how busy/crowded a place is
+               - Handles specific times: "how busy is Livingston at 2pm"
+               - Handles peak queries: "what time is Livingston busiest"
+               - Example queries: "is Busch crowded now", "when is the gym least busy"
+            
             RESPONSE FORMAT: Return ONLY valid JSON with one or multiple categories.
             
             EXAMPLES:
@@ -474,12 +549,22 @@ def send_user_message(api_key, user_message, personal_context=""):
             User: "When can I work out and what's for dinner?"
             Response: {"category": ["Gym Hours", "Dining Menu"]}
             
+            User: "How crowded is Livingston dining hall at 7pm?"
+            Response: {"category": ["Location Busyness"]}
+            
+            User: "What time is the gym usually busiest?"
+            Response: {"category": ["Location Busyness"]}
+            
+            User: "Is Busch dining hall busy right now and what are they serving?"
+            Response: {"category": ["Location Busyness", "Dining Menu"]}
+            
             RULES:
             - Always return valid JSON with "category" key
             - "category" value is an array of strings
             - Use exact category names from the list above
             - Select ALL relevant categories for the query
             - If no categories match, return: {"category": ["General"]}
+            - For busyness queries, ALWAYS include "Location Busyness" even if other categories apply
             """
 
         Client = genai.Client(api_key=api_key)
@@ -512,9 +597,38 @@ def send_user_message(api_key, user_message, personal_context=""):
             requires_sql = False
             intent_data = None
         
-        # Step 3: Query SQL if needed
+        # Step 3: Determine what data needs to be fetched
+        categories = intent_data.get('category', []) if intent_data else []
+        needs_sql = any(cat in ["Dining Menu", "Dining Hours", "Gym Hours", "Campus Events", "Library Hours", "Library Locations"] for cat in categories)
+        needs_busyness = "Location Busyness" in categories
+        
         sql_response = None
-        if requires_sql:
+        busyness_response = None
+        
+        if needs_busyness and needs_sql:
+            # CONCURRENT EXECUTION: Run both queries in parallel using ThreadPoolExecutor
+            logger.info("🔀 STEP 3: Running parallel queries (Busyness + Database)...")
+            
+            with ThreadPoolExecutor(max_workers=2) as executor:
+                # Submit both tasks
+                future_busyness = executor.submit(query_busyness, user_message)
+                future_sql = executor.submit(query_snowflake, intent_data, user_message)
+                
+                # Wait for both to complete
+                busyness_response = future_busyness.result()
+                sql_response = future_sql.result()
+            
+            logger.info(f"📊 Busyness Status: {busyness_response.get('status')}")
+            logger.info(f"📊 SQL Response Status: {sql_response.get('status')}")
+            
+        elif needs_busyness:
+            # Only busyness needed
+            logger.info("🗺️  STEP 3: Querying location busyness...")
+            busyness_response = query_busyness(user_message)
+            logger.info(f"📊 Busyness Status: {busyness_response.get('status')}")
+            
+        elif needs_sql:
+            # Only SQL needed
             logger.info("🗄️  STEP 3: Querying Snowflake database...")
             sql_response = query_snowflake(intent_data, user_message)
             logger.info(f"📊 SQL Response Status: {sql_response.get('status')}")
@@ -522,11 +636,11 @@ def send_user_message(api_key, user_message, personal_context=""):
                 data_summary = {k: len(v['data']) for k, v in sql_response.get('data', {}).items()}
                 logger.info(f"📈 Data retrieved: {data_summary}")
         else:
-            logger.info("⏭️  STEP 3: Skipping database query (not needed)")
+            logger.info("⏭️  STEP 3: No database or busyness query needed")
         
         # Step 4: Assemble final context
         logger.info("🔧 STEP 4: Assembling context for thinking model...")
-        final_context = assemble_final_context(user_message, intent_text, sql_response, personal_context)
+        final_context = assemble_final_context(user_message, intent_text, sql_response, personal_context, busyness_response)
         logger.info(f"📝 Context length: {len(final_context)} characters")
         
         # Step 5: Get final response from thinking model
