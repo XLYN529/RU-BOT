@@ -185,20 +185,19 @@
 }
 
 .type-info h3 {
-  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 4px 0;
+  margin-bottom: 4px;
 }
 
 .type-info p {
   font-size: 14px;
-  color: #888;
+  color: #aaa;
   margin: 0;
 }
 
-/* Form */
-.modal-form {
+.confirm-message {
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -287,6 +286,22 @@
   cursor: not-allowed;
 }
 
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+}
+
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 /* Scrollbar */
 .modal-container::-webkit-scrollbar {
   width: 8px;
@@ -343,10 +358,37 @@
 .context-item {
   padding: 12px;
   border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .context-item:last-child {
   border-bottom: none;
+}
+
+.delete-item-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #888;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.delete-item-btn:hover {
+  background: rgba(204, 0, 51, 0.1);
+  border-color: #cc0033;
+  color: #cc0033;
+}
+
+.delete-item-btn svg {
+  display: block;
 }
 
 .context-item-title {
@@ -562,11 +604,57 @@
   .type-icon {
     width: 40px;
     height: 40px;
-    margin-right: 12px;
   }
-  
-  .type-icon svg {
-    width: 20px;
-    height: 20px;
-  }
+}
+
+/* Custom Confirmation Dialog */
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.confirm-dialog {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+.confirm-icon {
+  color: #dc2626;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.confirm-dialog .confirm-message {
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 12px;
 }

@@ -168,6 +168,35 @@ async def add_context(request: PersonalContextRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.delete("/api/context/item/{context_type}/{index}")
+async def delete_context_item(context_type: str, index: int):
+    """Delete a specific item from context"""
+    try:
+        if context_type == "preference":
+            raise HTTPException(status_code=400, detail="Use /api/context/preference/{key} for preferences")
+        
+        success = context_manager.delete_item(context_type, index)
+        if success:
+            return {"success": True, "message": f"Deleted {context_type} item at index {index}"}
+        else:
+            raise HTTPException(status_code=404, detail="Item not found or invalid index")
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/api/context/preference/{key}")
+async def delete_preference(key: str):
+    """Delete a specific preference by key"""
+    try:
+        success = context_manager.delete_preference(key)
+        if success:
+            return {"success": True, "message": f"Deleted preference: {key}"}
+        else:
+            raise HTTPException(status_code=404, detail="Preference not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.delete("/api/context")
 async def clear_context():
     """Clear all global personal context"""

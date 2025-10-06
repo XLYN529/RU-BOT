@@ -183,9 +183,9 @@
 }
 
 .title {
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 12px;
   color: #ffffff;
 }

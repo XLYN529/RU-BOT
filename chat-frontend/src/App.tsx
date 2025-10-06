@@ -21,6 +21,7 @@ function App() {
   const [isSpeaking, setIsSpeaking] = useState(false)
   const [volumeLevel, setVolumeLevel] = useState(0)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const streamingResponseRef = useRef<string>('')
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioChunksRef = useRef<Blob[]>([])
   const silenceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -83,28 +84,119 @@ function App() {
     }, 500)
 
     try {
-      // Send message with session ID (backend maintains full conversation history)
-      const response = await axios.post('http://localhost:8000/api/chat', {
-        message: userMessage,
-        session_id: sessionId,
-        voice_mode: shouldSpeak  // Flag for voice mode to use different system prompt
+      // Use streaming endpoint
+      const response = await fetch('http://localhost:8000/api/chat/stream', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          session_id: sessionId,
+          voice_mode: shouldSpeak
+        }),
       })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const reader = response.body?.getReader()
+      const decoder = new TextDecoder()
       
-      clearTimeout(queryTimer)
-      setQueryStatus(null)
-
-      // Store session ID from response (for first message or new session)
-      if (response.data.session_id && response.data.session_id !== sessionId) {
-        setSessionId(response.data.session_id)
+      if (!reader) {
+        throw new Error('No response body')
       }
 
-      // Add assistant response to state
-      const assistantMessage = response.data.response
-      setMessages(prev => [...prev, { role: 'assistant' as const, content: assistantMessage }])
-      // If voice mode, speak the response
-      if (shouldSpeak && voiceMode) {
-        await speakText(assistantMessage)
+      streamingResponseRef.current = ''
+      let receivedSessionId = sessionId
+      let buffer = '' // Buffer for incomplete SSE messages
+      let hasStartedStreaming = false
+
+      // Read the stream
+      while (true) {
+        const { done, value } = await reader.read()
+        
+        if (done) break
+
+        // Decode chunk and add to buffer
+        buffer += decoder.decode(value, { stream: true })
+        
+        // Split by double newline (SSE message separator)
+        const sseMessages = buffer.split('\n\n')
+        
+        // Keep the last incomplete message in the buffer
+        buffer = sseMessages.pop() || ''
+        
+        // Process complete messages
+        for (const message of sseMessages) {
+          const lines = message.split('\n')
+          
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              try {
+                const data = JSON.parse(line.slice(6))
+                
+                // Handle session_id
+                if (data.session_id) {
+                  receivedSessionId = data.session_id
+                  if (receivedSessionId !== sessionId) {
+                    setSessionId(receivedSessionId)
+                  }
+                }
+                
+                // Handle content chunks
+                if (data.chunk) {
+                  // First chunk - clear status and add message container
+                  if (!hasStartedStreaming) {
+                    hasStartedStreaming = true
+                    clearTimeout(queryTimer)
+                    setQueryStatus(null)
+                    setLoading(false)
+                    setMessages(prev => [...prev, { role: 'assistant' as const, content: '' }])
+                  }
+                  
+                  // Add chunk character by character for smooth typing effect
+                  const chunkText = data.chunk
+                  for (let i = 0; i < chunkText.length; i++) {
+                    streamingResponseRef.current += chunkText[i]
+                    setMessages(prev => {
+                      const newMessages = [...prev]
+                      if (newMessages.length > 0) {
+                        newMessages[newMessages.length - 1] = {
+                          role: 'assistant' as const,
+                          content: streamingResponseRef.current
+                        }
+                      }
+                      return newMessages
+                    })
+                    // Delay on every character for slower typing effect
+                    await new Promise(resolve => setTimeout(resolve, 20))
+                  }
+                }
+                
+                // Handle errors
+                if (data.error) {
+                  throw new Error(data.error)
+                }
+                
+                // Handle completion
+                if (data.done) {
+                  console.log('Stream completed:', streamingResponseRef.current.length, 'chars')
+                }
+              } catch (e) {
+                console.error('Failed to parse SSE data:', line, e)
+              }
+            }
+          }
+        }
       }
+
+      // If voice mode, speak the complete response
+      if (shouldSpeak && voiceMode && streamingResponseRef.current) {
+        await speakText(streamingResponseRef.current)
+      }
+
     } catch (error: any) {
       clearTimeout(queryTimer)
       console.error('Error:', error)
@@ -112,22 +204,20 @@ function App() {
       // Extract detailed error message
       let errorMessage = 'Sorry, there was an error processing your request.'
       
-      if (error.response?.data?.detail) {
-        errorMessage += `\n\nError: ${error.response.data.detail}`
-      } else if (error.message) {
+      if (error.message) {
         errorMessage += `\n\nError: ${error.message}`
       }
       
-      console.error('Full error details:', {
-        response: error.response?.data,
-        status: error.response?.status,
-        message: error.message
+      setMessages(prev => {
+        // Remove the empty assistant message if it exists
+        const filtered = prev.filter((msg, idx) => 
+          !(idx === prev.length - 1 && msg.role === 'assistant' && msg.content === '')
+        )
+        return [...filtered, { 
+          role: 'assistant' as const, 
+          content: errorMessage
+        }]
       })
-      
-      setMessages(prev => [...prev, { 
-        role: 'assistant' as const, 
-        content: errorMessage
-      }])
     } finally {
       clearTimeout(queryTimer)
       setLoading(false)
@@ -348,7 +438,7 @@ function App() {
               </svg>
             )}
           </button>
-          {sidebarExpanded && <span className="sidebar-title">RU Assistant</span>}
+          {sidebarExpanded && <span className="sidebar-title">RU BOT</span>}
         </div>
 
         <button className="personal-context-button" onClick={addPersonalContext}>
@@ -380,7 +470,7 @@ function App() {
       <div className={`chat-container ${sidebarExpanded ? 'with-sidebar-expanded' : 'with-sidebar-collapsed'}`}>
         {messages.length === 0 ? (
           <div className="welcome-screen">
-            <h1 className="title">Find what YOU need?</h1>
+            <h1 className="title">What's on your mind, Vinny?</h1>
             <p className="subtitle">Ask anything about Rutgers University while having context of your own personal info</p>
             <form onSubmit={handleSubmit} className="input-container">
               <div 

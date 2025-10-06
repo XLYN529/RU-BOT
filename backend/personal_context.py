@@ -179,6 +179,50 @@ class PersonalContextManager:
         
         return "\n".join(parts)
     
+    def delete_item(self, context_type: str, index: int) -> bool:
+        """
+        Delete a specific item from context
+        
+        Args:
+            context_type: Type of context ('schedule', 'assignment', 'note')
+            index: Index of item to delete
+            
+        Returns:
+            bool: Success status
+        """
+        context = self.get_context()
+        
+        try:
+            if context_type == "schedule" and 0 <= index < len(context["schedule"]):
+                context["schedule"].pop(index)
+            elif context_type == "assignment" and 0 <= index < len(context["assignments"]):
+                context["assignments"].pop(index)
+            elif context_type == "note" and 0 <= index < len(context["notes"]):
+                context["notes"].pop(index)
+            elif context_type == "preference":
+                # For preferences, index is actually the key
+                pass  # Handle separately
+            else:
+                return False
+            
+            return self.save_context(context=context)
+        except Exception as e:
+            print(f"Error deleting item: {e}")
+            return False
+    
+    def delete_preference(self, key: str) -> bool:
+        """Delete a specific preference by key"""
+        context = self.get_context()
+        
+        try:
+            if key in context["preferences"]:
+                del context["preferences"][key]
+                return self.save_context(context=context)
+            return False
+        except Exception as e:
+            print(f"Error deleting preference: {e}")
+            return False
+    
     def clear_context(self, session_id: str = None) -> bool:
         """Clear all personal context (global)"""
         context_file = self._get_context_file()

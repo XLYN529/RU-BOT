@@ -799,13 +799,26 @@ def send_user_message(api_key, user_message, personal_context="", voice_mode=Fal
         # Step 2: Parse intent and determine if SQL is needed
         logger.info("🔍 STEP 2: Parsing intent and checking if SQL needed...")
         try:
-            intent_data = json.loads(intent_text)
+            # Strip markdown code fences if present
+            cleaned_intent = intent_text.strip()
+            if cleaned_intent.startswith('```'):
+                # Remove opening fence (```json or ```)
+                lines = cleaned_intent.split('\n')
+                if lines[0].startswith('```'):
+                    lines = lines[1:]
+                # Remove closing fence
+                if lines and lines[-1].strip() == '```':
+                    lines = lines[:-1]
+                cleaned_intent = '\n'.join(lines).strip()
+            
+            intent_data = json.loads(cleaned_intent)
             requires_sql = "category" in intent_data
             logger.info(f"✅ Intent parsed successfully: {intent_data}")
             logger.info(f"🗄️  SQL Required: {requires_sql}")
         except json.JSONDecodeError as e:
             # If JSON parsing fails, treat as general question
             logger.warning(f"⚠️  Failed to parse intent JSON: {e}")
+            logger.warning(f"Raw intent text: {intent_text}")
             logger.info("💬 Treating as general question (no database query)")
             requires_sql = False
             intent_data = None
@@ -954,12 +967,25 @@ def send_user_message_stream(api_key, user_message, personal_context="", voice_m
     # Step 2: Parse intent and determine if SQL is needed
     logger.info("🔍 STEP 2: Parsing intent and checking if SQL needed...")
     try:
-        intent_data = json.loads(intent_text)
+        # Strip markdown code fences if present
+        cleaned_intent = intent_text.strip()
+        if cleaned_intent.startswith('```'):
+            # Remove opening fence (```json or ```)
+            lines = cleaned_intent.split('\n')
+            if lines[0].startswith('```'):
+                lines = lines[1:]
+            # Remove closing fence
+            if lines and lines[-1].strip() == '```':
+                lines = lines[:-1]
+            cleaned_intent = '\n'.join(lines).strip()
+        
+        intent_data = json.loads(cleaned_intent)
         requires_sql = "category" in intent_data
         logger.info(f"✅ Intent parsed successfully: {intent_data}")
         logger.info(f"🗄️  SQL Required: {requires_sql}")
     except json.JSONDecodeError as e:
         logger.warning(f"⚠️  Failed to parse intent JSON: {e}")
+        logger.warning(f"Raw intent text: {intent_text}")
         logger.info("💬 Treating as general question (no database query)")
         requires_sql = False
         intent_data = None

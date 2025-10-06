@@ -29,6 +29,12 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
   // View current context state
   const [currentContext, setCurrentContext] = useState<any>(null)
   const [loadingContext, setLoadingContext] = useState(false)
+  
+  // Delete confirmation state
+  const [deleteConfirm, setDeleteConfirm] = useState<{show: boolean, type: string, index?: number, key?: string, isAll?: boolean}>({
+    show: false,
+    type: '',
+  })
 
   if (!isOpen) return null
 
@@ -59,6 +65,41 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
     } finally {
       setLoadingContext(false)
     }
+  }
+
+  const handleDeleteItem = (contextType: string, index: number) => {
+    setDeleteConfirm({ show: true, type: contextType, index })
+  }
+
+  const handleDeletePreference = (key: string) => {
+    setDeleteConfirm({ show: true, type: 'preference', key })
+  }
+
+  const handleClearAll = () => {
+    setDeleteConfirm({ show: true, type: 'all', isAll: true })
+  }
+
+  const confirmDelete = async () => {
+    try {
+      if (deleteConfirm.isAll) {
+        await axios.delete('http://localhost:8000/api/context')
+      } else if (deleteConfirm.type === 'preference') {
+        await axios.delete(`http://localhost:8000/api/context/preference/${encodeURIComponent(deleteConfirm.key!)}`)
+      } else {
+        await axios.delete(`http://localhost:8000/api/context/item/${deleteConfirm.type}/${deleteConfirm.index}`)
+      }
+      // Refresh context
+      await handleViewContext()
+      setDeleteConfirm({ show: false, type: '' })
+    } catch (error) {
+      console.error('Error deleting:', error)
+      alert('Failed to delete')
+      setDeleteConfirm({ show: false, type: '' })
+    }
+  }
+
+  const cancelDelete = () => {
+    setDeleteConfirm({ show: false, type: '' })
   }
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -297,17 +338,29 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                       <div className="context-section-content">
                         {currentContext.schedule.map((item: any, index: number) => (
                           <div key={index} className="context-item">
-                            <div className="context-item-title">{item.course}</div>
-                            <div className="context-item-detail">{item.day} • {item.time}</div>
-                            {item.location && (
-                              <div className="context-item-detail">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display: 'inline', marginRight: '4px'}}>
-                                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                  <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                                {item.location}
-                              </div>
-                            )}
+                            <div style={{flex: 1}}>
+                              <div className="context-item-title">{item.course}</div>
+                              <div className="context-item-detail">{item.day} • {item.time}</div>
+                              {item.location && (
+                                <div className="context-item-detail">
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{display: 'inline', marginRight: '4px'}}>
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                  </svg>
+                                  {item.location}
+                                </div>
+                              )}
+                            </div>
+                            <button
+                              onClick={() => handleDeleteItem('schedule', index)}
+                              className="delete-item-btn"
+                              title="Delete"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              </svg>
+                            </button>
                           </div>
                         ))}
                       </div>
@@ -329,10 +382,22 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                       <div className="context-section-content">
                         {currentContext.assignments.map((item: any, index: number) => (
                           <div key={index} className="context-item">
-                            <div className="context-item-title">{item.title}</div>
-                            <div className="context-item-detail">Due: {item.due_date}</div>
-                            {item.course && <div className="context-item-detail">Course: {item.course}</div>}
-                            {item.description && <div className="context-item-description">{item.description}</div>}
+                            <div style={{flex: 1}}>
+                              <div className="context-item-title">{item.title}</div>
+                              <div className="context-item-detail">Due: {item.due_date}</div>
+                              {item.course && <div className="context-item-detail">Course: {item.course}</div>}
+                              {item.description && <div className="context-item-description">{item.description}</div>}
+                            </div>
+                            <button
+                              onClick={() => handleDeleteItem('assignment', index)}
+                              className="delete-item-btn"
+                              title="Delete"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              </svg>
+                            </button>
                           </div>
                         ))}
                       </div>
@@ -353,8 +418,20 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                       <div className="context-section-content">
                         {currentContext.notes.map((item: any, index: number) => (
                           <div key={index} className="context-item">
-                            <div className="context-item-category">[{item.category}]</div>
-                            <div className="context-item-content">{item.content}</div>
+                            <div style={{flex: 1}}>
+                              <div className="context-item-category">[{item.category}]</div>
+                              <div className="context-item-content">{item.content}</div>
+                            </div>
+                            <button
+                              onClick={() => handleDeleteItem('note', index)}
+                              className="delete-item-btn"
+                              title="Delete"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              </svg>
+                            </button>
                           </div>
                         ))}
                       </div>
@@ -374,8 +451,20 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                       <div className="context-section-content">
                         {Object.entries(currentContext.preferences).map(([key, value]: [string, any], index: number) => (
                           <div key={index} className="context-item">
-                            <div className="context-item-title">{key}</div>
-                            <div className="context-item-detail">{value}</div>
+                            <div style={{flex: 1}}>
+                              <div className="context-item-title">{key}</div>
+                              <div className="context-item-detail">{value}</div>
+                            </div>
+                            <button
+                              onClick={() => handleDeletePreference(key)}
+                              className="delete-item-btn"
+                              title="Delete"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              </svg>
+                            </button>
                           </div>
                         ))}
                       </div>
@@ -403,6 +492,16 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
                 <button type="button" onClick={handleBack} className="btn btn-secondary">
                   Back
                 </button>
+                {currentContext && (
+                  (currentContext.schedule?.length > 0 || 
+                   currentContext.assignments?.length > 0 || 
+                   currentContext.notes?.length > 0 || 
+                   Object.keys(currentContext.preferences || {}).length > 0) && (
+                    <button type="button" onClick={handleClearAll} className="btn btn-danger">
+                      Clear All
+                    </button>
+                  )
+                )}
               </div>
             </div>
           ) : (
@@ -709,6 +808,38 @@ export default function PersonalContextModal({ isOpen, onClose }: PersonalContex
           )}
         </div>
       </div>
+
+      {/* Custom Delete Confirmation Modal */}
+      {deleteConfirm.show && (
+        <div className="confirm-overlay" onClick={cancelDelete}>
+          <div className="confirm-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="confirm-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <h3 className="confirm-title">
+              {deleteConfirm.isAll ? 'Delete All Context?' : `Delete ${deleteConfirm.type}?`}
+            </h3>
+            <p className="confirm-message">
+              {deleteConfirm.isAll 
+                ? 'This will permanently delete ALL your personal context including schedules, assignments, notes, and preferences. This action cannot be undone.'
+                : `Are you sure you want to delete this ${deleteConfirm.type === 'preference' ? `preference "${deleteConfirm.key}"` : `${deleteConfirm.type} item`}?`
+              }
+            </p>
+            <div className="confirm-actions">
+              <button onClick={cancelDelete} className="btn btn-secondary">
+                Cancel
+              </button>
+              <button onClick={confirmDelete} className="btn btn-danger">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
